@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'logRegApp/css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- <img src="{% static 'logRegApp/img/globe.jpg' %}" alt=""> -->
+    <div class="wrapper">
+
+        <div class="regist">
+          {% if messages %} {% for message in messages %}
+          <p style="color:white;font-size:11px;">{{ message }}</p>
+          {% endfor %} {% endif %}
+
+            <h2>Register for Trips</h2>
+
+
+            <form  action="/r_process" method="post">
+                {% csrf_token %}
+                <p>{{first}} {{last}} {{passw}} {{conpass}}</p>
+                <p>Name: <br><input id="inputfield" type="text" name="name"></p>
+                <p>Username: <br><input id="inputfield" type="text" name="usern"></p>
+                <p>Password: <br><input id="inputfield" type="password" name="pass"></p>
+                <p>Confirm Password: <br><input id="inputfield" type="password" name="cpass"></p>
+                <input class="ghost-buttonlog" type="submit" value="Register">
+            </form>
+        </div>
+        <hr>
+        <div class="login">
+            <h2>Login for Trips</h2>
+            <form class="" action="/l_process" method="post">
+                {% csrf_token %}
+                <p>Username: <br><input id="inputfield" type="text" name="usern"></p>
+                <p>Password: <br><input id="inputfield" type="password" name="pass" value=""></p>
+                <input type="submit" class="ghost-buttonlog"name="" value="Login">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

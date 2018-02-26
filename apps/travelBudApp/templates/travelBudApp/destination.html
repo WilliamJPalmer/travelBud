@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destinations</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travelBudApp/css/style.css'%}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <a class="ghost-button-b" href="{% url 'travel:index' %}">Home</a>
+      <a class="ghost-button" href="{%  url 'logReg:logout' %}">Logout</a>
+
+      <div class="dests" style="text-align:left;">
+
+
+      <h3 style="text-decoration: underline;font-size:24px;">{{trips.destination}}:</h3>
+      <p><span style="font-weight:bold;font-size:15px;">Planned By: </span>{{trips.planner.username}}</p>
+      <p><span style="font-weight:bold;font-size:15px;">Description: </span>{{trips.description}}</p>
+      <p><span style="font-weight:bold;font-size:15px;">Travel From Date: </span>{{trips.travel_start}}</p>
+      <p><span style="font-weight:bold;font-size:15px;">Travel To Date: </span>{{trips.travel_end}}</p>
+
+      <hr>
+      <h3>Other Users Joining the Trip</h3>
+      {% for user in joiningusers %}
+      <p>{{ user.username }}</p>
+      {% endfor %}
+
+      </div>
+    </div>
+
+  </body>
+</html>

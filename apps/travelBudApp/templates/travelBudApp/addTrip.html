@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Plan</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travelBudApp/css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <a class="ghost-button-b"href="{% url 'travel:index' %}">Home</a>
+      <a class="ghost-button"ref="{%  url 'logReg:logout' %}">Logout</a>
+      <p></p>
+      <h2>Add a Trip</h2>
+
+      <div class="addTrip">
+        {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+        <form class="" action="{%  url 'travel:newTrip' %}" method="post">
+          {%  csrf_token %}
+          <label for="destination">Destination </label><br>
+          <input id="inputfield" type="text" name="destination"><br>
+          <label for="description">Description </label><br>
+          <!-- <input id="inputfield" type="text" name="description"><br> -->
+          <textarea id="inputfieldTA"name="description" rows="3" cols="50"></textarea>
+          <label for="travelStart">Travel From </label><br>
+          <input id="inputfield" type="date" name="travelStart"><br>
+          <label for="travelEnd">Travel To </label><br>
+          <input id="inputfield" type="date" name="travelEnd"><br>
+          <input class="ghost-buttonlog"type="submit" name="" value="Add Trip">
+        </form>
+
+      </div>
+
+
+    </div>
+  </body>
+</html>
